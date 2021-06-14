@@ -90,7 +90,14 @@ fun main() {
     "absdeafea".hasA{println("Nombre de a:$it")}
 
     //Exo 9
-
     val user1 = User("Nicolas", 40, "nicolas.haddad80@gmail.com")
     println(user1)
+    user1.email = "nicolas.haddad1980@gmail.com"
+    println(user1)
+
+    //Exo 10
+    val user2 = UserB("toto")
+    user2.address = "56 BV de l'Europe, 31000 Toulouse"
+    user2.address = "18 BV Alber Bedouce, 31400 Toulouse"
 }
+
