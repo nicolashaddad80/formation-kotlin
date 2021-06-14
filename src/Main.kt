@@ -14,6 +14,15 @@ fun function4optimazed(name: String ="Default Value") = "One for $name, one for 
 fun function5(name:String, number:Int = 42, toUperCase:Boolean = false):String {
     return if(toUperCase) "${name.toUpperCase()}$number" else "$name$number"
 }
+
+//Exo6
+//Fonction d'extention
+
+fun MutableList<Int>.swap(index1:Int,index2:Int){
+    val tmp = this[index1]
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
 fun main() {
     //Exo 2
     /*val  n = 5
@@ -44,5 +53,11 @@ fun main() {
     println(function4("toto"))
 */
     //Exo 5
-    println(function5("titi",55, true))
+    /*println(function5("titi",55, true))*/
+
+    //Exo 6
+    val maMutableList = mutableListOf(1, 2, 3, 4, 5)
+    println("before Swap: $maMutableList")
+    maMutableList.swap(2,3)
+    println("after Swap: $maMutableList")
 }
