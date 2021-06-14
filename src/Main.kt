@@ -65,7 +65,7 @@ fun main() {
     */
 
      // Exo 7
-    val calculateGrade = {x:Int ->
+   /* val calculateGrade = {x:Int ->
         when(x){
         in 0 ..40 -> "fail"
         in 41 .. 70 -> "pass"
@@ -78,4 +78,19 @@ fun main() {
     println(calculateGrade(70))
     println(calculateGrade(100))
     println(calculateGrade(1000))
+
+    */
+
+    //Exo 8
+    fun String.hasA( nbA : (Int) -> Unit){
+        val nb = this.count{it == 'a'}
+        if ( nb > 0 ) nbA(nb)
+    }
+
+    "absdeafea".hasA{println("Nombre de a:$it")}
+
+    //Exo 9
+
+    val user1 = User("Nicolas", 40, "nicolas.haddad80@gmail.com")
+    println(user1)
 }
