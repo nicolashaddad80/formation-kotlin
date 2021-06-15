@@ -7,8 +7,7 @@ interface Information {
 data class UserD(
     val id:Int ,
     override val email: String
-):Information{
-}
+):Information
 fun main(){
     val user = UserD(42, "jerome@kotlin.com")
     println("$user::nickname ${user.nickname}")
