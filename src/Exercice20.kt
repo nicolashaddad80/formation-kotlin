@@ -26,17 +26,17 @@ val Customer.orderedProducts: Set<Product> get() = orders.flatMap { it.products 
 val Shop.allOrderedProducts: Set<Product> get() = customers.flatMap { it.orderedProducts }.toSet()
 
 // Retourner un client dont le nombre de commandes est le plus élevé parmi tous les clients
-fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? = customers.maxByOrNull { it.orders.size }
+fun Shop.getCustomerWithMaximumNumberOfOrders(): Customer? = customers.maxBy { it.orders.size }
 
 // Retourner le produit le plus cher qui a été commandé
-fun Customer.getMostExpensiveOrderedProduct(): Product? = orderedProducts.maxByOrNull { it.price }
+fun Customer.getMostExpensiveOrderedProduct(): Product? = orderedProducts.maxBy { it.price }
 
 // Retourner une liste de clients, triés par le nombre croissant de commandes qu'ils ont passées
 fun Shop.getCustomersSortedByNumberOfOrders(): List<Customer> = customers.sortedBy { it.orders.size }
 
 // Retourner la somme des prix de tous les produits commandés par un client.
 // Remarque: le client peut commander plusieurs fois le même produit.
-fun Customer.getTotalOrderPrice(): Double = orders.flatMap { it.products }.sumOf { it.price }
+fun Customer.getTotalOrderPrice(): Double = orders.flatMap { it.products }.sumByDouble { it.price }
 
 // Retourner une map des clients vivant dans chaque ville
 fun Shop.groupCustomersByCity(): Map<City, List<Customer>> = customers.groupBy { it.city }
@@ -54,7 +54,7 @@ fun Shop.getSetOfProductsOrderedByEveryCustomer(): Set<Product> =
 
 // Retourner le produit le plus cher parmi tous les produits livrés (utilisez l'indicateur Order.isDelivered)
 fun Customer.getMostExpensiveDeliveredProduct(): Product? =
-    orders.filter { it.isDelivered }.flatMap { it.products }.maxByOrNull { it.price }
+    orders.filter { it.isDelivered }.flatMap { it.products }.maxBy { it.price }
 
 // Retourner une liste des produits commandés par un client
 fun Customer.getOrderedProductsList(): List<Product> = orders.flatMap { it.products }
