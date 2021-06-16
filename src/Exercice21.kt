@@ -4,12 +4,13 @@ class Sum(val left: Expr, val right: Expr) : Expr
 class Sub(val left: Expr, val right: Expr) : Expr
 
 
+
 fun eval(expr: Expr): Int =
     when(expr){
         is Num -> expr.value
         is Sum -> eval(expr.left) + eval(expr.right)
         is Sub -> eval(expr.left) - eval(expr.right)
-        else -> throw (IllegalArgumentException())
+        else -> throw IllegalArgumentException("Unknown Expression")
     }
 
 fun main() {
